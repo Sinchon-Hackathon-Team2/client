@@ -1,9 +1,5 @@
 import "./App.css";
 import styled from "styled-components";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MyPage from "./pages/MyPage";
-import CreatePlayList from "./page/CreatePlayList";
-import SelectMusic from "./page/SelectMusic";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import DetailPage from "./pages/DetailPage";
@@ -15,6 +11,7 @@ import MainPage from "./pages/MainPage";
 import MyPage from "./pages/MyPage";
 import CreatePlayList from "./page/CreatePlayList";
 import UserProfile from "./pages/UserProfile";
+import SelectMusic from "./page/SelectMusic";
 
 function App() {
   return (

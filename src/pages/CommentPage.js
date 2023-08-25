@@ -70,6 +70,7 @@ const Font = styled.div`
 
 const CommentInput = styled.input`
   width: 351px;
+  margin: 18px 20px;
 
   color: white;
   font-family: "Pretendard-Regular";

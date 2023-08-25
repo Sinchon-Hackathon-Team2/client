@@ -28,7 +28,14 @@ const MainPage = () => {
   };
 
   // 더미 카테고리 데이터
-  const categories = ["#발라드", "#힙합", "#댄스", "#R&B"];
+  const categories = [
+    "#발라드",
+    "#랩/힙합",
+    "#댄스",
+    "#R&B/Soul",
+    "인디음악",
+    "락/메탈",
+  ];
 
   return (
     <Container>
@@ -106,7 +113,7 @@ const CategoryList = styled.div`
   display: flex;
   flex-direction: row;
   margin: 25px 0px;
-  padding-left: 20px;
+  padding: 0px 20px;
   gap: 10px;
   box-sizing: border-box;
 
