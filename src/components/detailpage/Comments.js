@@ -2,12 +2,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 //img
-import ex from "../images/ex.svg";
+import ex from "../../images/ex.svg";
 
 //context
 // import { useAuth } from "..//../../contexts/AuthContext";
 
-const Comments = ({ article }) => {
+const Comments = ({ userName, comment }) => {
   //   const { BASE_URL } = useAuth();
   const navigate = useNavigate();
   return (
@@ -22,9 +22,9 @@ const Comments = ({ article }) => {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <UserContainer>
             <ArticleImage src={ex} />
-            <UserName>강백호</UserName>
+            <UserName>{userName}</UserName>
           </UserContainer>
-          <Comment>저랑 취향이 비슷하시네요~</Comment>
+          <Comment>{comment}</Comment>
         </div>
       </Box>
     </>

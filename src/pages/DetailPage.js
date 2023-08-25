@@ -4,8 +4,10 @@ import styled from "styled-components";
 // import axios from "axios";
 
 //components
-import Song from "../components/Song";
-import Comments from "../components/Comments";
+import Song from "../components/detailpage/Song";
+import Comments from "../components/detailpage/Comments";
+import Header from "../components/Header";
+
 //images
 import likes_on from "../images/likes_on.svg";
 import likes_off from "../images/likes_off.svg";
@@ -22,38 +24,21 @@ const DetailPage = () => {
     setIsLiked((prevIsLiked) => !prevIsLiked);
   };
 
-  // GET: 북마크한 아티클
-  //   const { authToken, BASE_URL } = useAuth();
-  //   useEffect(() => {
-  //     getData();
-  //   }, []);
+  // 더미 댓글 데이터
+  const commentData = [
+    { userName: "강백호", comment: "저랑 취향이 비슷하시네요~" },
+    { userName: "서태웅", comment: "저와 한 번 심도 깊은 대화를 나눠보시죠" },
+  ];
+  const commentNum = commentData.length;
 
-  //   const [data, setData] = useState([]);
-  //   const getData = () => {
-  //     axios
-  //       .get(`${BASE_URL}mypage/bookmark/`, {
-  //         headers: {
-  //           Authorization: `Bearer ${authToken}`,
-  //         },
-  //       })
-  //       .then((response) => {
-  //         setData(response.data.data.bookmarkPost);
-  //         console.log(response.data.data.bookmarkPost);
-  //       })
-  //       .catch((error) => {
-  //         console.error(
-  //           "북마크 데이터를 불러오는 중 오류가 발생했습니다.",
-  //           error
-  //         );
-  //       });
-  //   };
+  // 더미 노래 데이터
+  const songData = [{ title: "Clap!", author: "TREASURE(트레저)" }];
 
   return (
     <Container>
-      <Header>test</Header>
-
+      <Header title={"Playlist"} headerRight={""} />
       <div style={{ position: "relative" }}>
-        <PlaylistImg src={ex} />
+        <PlaylistImg />
         <UserProfile src={ex} />
         <UserName>강백호</UserName>
       </div>
@@ -67,7 +52,7 @@ const DetailPage = () => {
         <Title>20230825 오늘의 감성 멋대 학생들과 공유~</Title>
         <ResponseDiv>
           <div style={{ display: "flex" }}>
-            <Num>댓글 2</Num>
+            <Num>댓글 {commentNum}</Num>
             <Num>좋아요 3</Num>
           </div>
           <Like
@@ -75,25 +60,14 @@ const DetailPage = () => {
             onClick={handleLikeToggle}
           />
         </ResponseDiv>
-        <BookMarkList>
-          <Song />
-          <Song />
-          <Song />
-          <Song />
-          <Song />
-          <Song />
-          {/* {data &&
-          data.map((article) => (
-            <TodayArticle
-              key={article.post_id}
-              article={article}
-              BASE_URL={BASE_URL}
-            />
-          ))} */}
-        </BookMarkList>
+        <SongList>
+          {songData.map((song, index) => (
+            <Song key={index} title={song.title} author={song.author} />
+          ))}
+        </SongList>
         <CommentBox>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <CommentTitle>댓글 2</CommentTitle>
+            <CommentTitle>댓글 {commentNum}</CommentTitle>
             <CommentMaking
               onClick={() => {
                 navigate("/comment");
@@ -103,16 +77,13 @@ const DetailPage = () => {
             </CommentMaking>
           </div>
           <CommentList>
-            <Comments />
-            <Comments />
-            {/* {data &&
-            data.map((article) => (
-              <TodayArticle
-                key={article.post_id}
-                article={article}
-                BASE_URL={BASE_URL}
+            {commentData.map((comment, index) => (
+              <Comments
+                key={index}
+                userName={comment.userName}
+                comment={comment.comment}
               />
-            ))} */}
+            ))}
           </CommentList>
         </CommentBox>
       </BottomBar>
@@ -141,13 +112,6 @@ const Font = styled.div`
   line-height: 100%; /* 15px */
   letter-spacing: -0.3px;
 `;
-const Header = styled.div`
-  color: #fff;
-  width: 393px;
-  height: 127px;
-  background: #202329;
-`;
-
 const BottomBar = styled.div`
   background: #202329;
   height: 570px;
@@ -175,6 +139,7 @@ const PlaylistImg = styled.img`
   width: 393px;
   height: 201px;
   background: #c65d5d;
+  border: none;
 `;
 
 const UserProfile = styled.img`
@@ -247,6 +212,6 @@ const CommentList = styled.div`
   margin: 30px 0px;
 `;
 
-const BookMarkList = styled.div`
+const SongList = styled.div`
   margin: 30px 0px;
 `;

@@ -2,12 +2,12 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 //img
-import ex from "../images/ex.svg";
+import ex from "../../images/ex.svg";
 
 //context
 // import { useAuth } from "..//../../contexts/AuthContext";
 
-const Song = ({ article }) => {
+const Song = ({ title, author }) => {
   //   const { BASE_URL } = useAuth();
   const navigate = useNavigate();
   return (
@@ -20,8 +20,8 @@ const Song = ({ article }) => {
         </TextContainer> */}
         <ArticleImage src={ex} />
         <TextContainer>
-          <Title>Clap!</Title>
-          <Author>TREASURE(트레저)</Author>
+          <Title>{title}</Title>
+          <Author>{author}</Author>
         </TextContainer>
       </Box>
     </>
