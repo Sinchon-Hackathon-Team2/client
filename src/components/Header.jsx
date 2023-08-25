@@ -26,6 +26,7 @@ const Container = styled.div`
   height: 127px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #4C4E53;
 `;
 
 const StyledHeaderBackBtn = styled(HeaderBackBtn)`
