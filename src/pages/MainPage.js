@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import playlistCover from '../images/playlistCover.png';
+import playlistCover from "../images/playlistCover.png";
 // import axios from "axios";
 
 //components
@@ -18,6 +18,23 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   const [follow, setFollow] = useState(false);
+  const [playlist, setPlaylist] = useState([
+    {
+      cover: playlistCover,
+      title: "20230825 오늘의 감성 멋대 학생들과 공유~",
+      Tag: ["#태그1", "#태그2"],
+    },
+    {
+      cover: playlistCover,
+      title: "불꽃남자의 농구할 때 듣는 노래",
+      Tag: ["#태그1", "#태그2", "#태그3"],
+    },
+    {
+      cover: playlistCover,
+      title: "20230824 신나는 노동요 Playlist",
+      Tag: ["#태그1", "#태그2"],
+    },
+  ]);
   const handleCategoryToggle = () => {
     setFollow((prevState) => !prevState);
   };
@@ -29,8 +46,8 @@ const MainPage = () => {
   };
 
   const handleDetailPlaylist = (post_id) => {
-        navigate(`/detail/${post_id}`);
-    }
+    navigate(`/detail/${post_id}`);
+  };
 
   // 더미 카테고리 데이터
   const categories = [
@@ -38,28 +55,24 @@ const MainPage = () => {
     "#랩/힙합",
     "#댄스",
     "#R&B/Soul",
-    "인디음악",
-    "락/메탈",
+    "#인디음악",
+    "#락/메탈",
   ];
 
-  // 더미 플레이리스트 박스 데이터
-  const playlist = [
-    {
-        cover: playlistCover,
-        title: "20230825 오늘의 감성 멋대 학생들과 공유~",
-        Tag: ["#태그1", "#태그2"],
-    },
-    {
-        cover: playlistCover,
-        title: "불꽃남자의 농구할 때 듣는 노래",
-        Tag: ["#태그1", "#태그2", "#태그3"],
-    },
-    {
-        cover: playlistCover,
-        title: "20230824 신나는 노동요 Playlist",
-        Tag: ["#태그1", "#태그2"],
-    },
-]
+  // 무작위 배열 섞기 함수
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  const handleShufflePlaylist = () => {
+    handleCategoryToggle();
+    const shuffledPlaylist = shuffleArray([...playlist]);
+    setPlaylist(shuffledPlaylist);
+  };
 
   return (
     <Container>
@@ -67,7 +80,7 @@ const MainPage = () => {
       <FollowBox>
         <FollowImg
           src={follow ? follow_on : follow_off}
-          onClick={handleCategoryToggle}
+          onClick={handleShufflePlaylist}
         />
         <span>팔로우한 사람만 보기</span>
       </FollowBox>
@@ -83,14 +96,14 @@ const MainPage = () => {
         ))}
       </CategoryList>
       <PlaylistContainer>
-            {playlist.map((item, index) => (
-                <SubContainer key={index} onClick={()=>handleDetailPlaylist(index)}>
-                    <Cover src={item.cover} alt={`Playlist Cover ${index}`} />
-                    <SubTitle>{item.title}</SubTitle>
-                    <Tag>{item.Tag.join('')}</Tag>
-                </SubContainer>
-            ))}
-        </PlaylistContainer>
+        {playlist.map((item, index) => (
+          <SubContainer key={index} onClick={() => handleDetailPlaylist(index)}>
+            <Cover src={item.cover} alt={`Playlist Cover ${index}`} />
+            <SubTitle>{item.title}</SubTitle>
+            <Tag>{item.Tag.join("")}</Tag>
+          </SubContainer>
+        ))}
+      </PlaylistContainer>
     </Container>
   );
 };
@@ -99,27 +112,24 @@ export default MainPage;
 
 //전체 styled
 const PlaylistContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);  /* 가로 한 줄에 2개씩 박스 배치 */
-    gap: 20px;
-    padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 가로 한 줄에 2개씩 박스 배치 */
+  gap: 20px;
+  padding: 20px;
 `;
 
-const Cover = styled.img`
-
-`;
+const Cover = styled.img``;
 
 const SubContainer = styled.div`
-cursor: pointer;
-
-`
+  cursor: pointer;
+`;
 
 const SubTitle = styled.div`
-color: white;
+  color: white;
 `;
 
 const Tag = styled.div`
-color: white;
+  color: white;
 `;
 
 const Container = styled.div`
@@ -157,7 +167,6 @@ const FollowBox = styled.div`
     line-height: 100%; /* 15px */
     letter-spacing: -0.3px;
   }
-
 `;
 
 const FollowImg = styled.img`
@@ -181,7 +190,6 @@ const CategoryList = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-
 `;
 
 const Category = styled.div`
@@ -193,6 +201,7 @@ const Category = styled.div`
   font-weight: 400;
   cursor: pointer;
   display: flex;
+  flex-shrink: 0;
   padding: 4px 12px;
   justify-content: center;
   align-items: center;
