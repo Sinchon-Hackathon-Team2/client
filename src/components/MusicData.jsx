@@ -2,13 +2,14 @@ import styled from "styled-components";
 import preview from "../images/preview.png";
 import check from "../images/check.svg";
 import notCheck from "../images/notCheck.svg";
-function MusicData() {
+function MusicData({ musicData }) {
+  console.log("con", musicData);
   return (
     <Container>
       <img src={preview} alt="" />
       <MusicInfoContainer>
         <MusicTitle>
-          CLAP!
+          {}
           <span>TREASURE(트레저)</span>
         </MusicTitle>
         <img src={check} alt="" />
