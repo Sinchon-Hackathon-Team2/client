@@ -2,8 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import photoIcon from "../img/photo.png";
 import plus from "../img/plus.png";
-
+import { useNavigate } from "react-router-dom";
 function CreatePlayList() {
+  const movePage = useNavigate();
+  const moveToSelectMusic = () => {
+    movePage("/selectMusic");
+  };
   return (
     <Container>
       <PhotoUploadBox>
@@ -23,7 +27,7 @@ function CreatePlayList() {
         <Hrdiv />
         <Hrdiv2 />
       </TitleInputContainer>
-      <AddMusicContainer>
+      <AddMusicContainer onClick={moveToSelectMusic}>
         <img src={plus} alt="" />
         <AddMusic>곡 추가하기</AddMusic>
       </AddMusicContainer>
@@ -148,7 +152,8 @@ const AddMusic = styled.div`
   line-height: 15px;
   letter-spacing: -0.32px;
   text-decoration-line: underline;
-
+  position: relative;
+  bottom: 2px;
   img {
     margin-right: 5px;
   }

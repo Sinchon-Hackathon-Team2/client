@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyPage from "./pages/MyPage";
 import CreatePlayList from "./page/CreatePlayList";
-
+import SelectMusic from "./page/SelectMusic";
 function App() {
   return (
     <Wrapper>
@@ -12,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/mypage" element={<MyPage/>}/>
           <Route path="/createPlayList" element={<CreatePlayList />} />
+          <Route path="/selectMusic" element={<SelectMusic />} />
         </Routes>
         
       </BrowserRouter>
