@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import photoIcon from "../img/photo.png";
-import plus from "../img/plus.png";
+import photoIcon from "../images/photo.png";
+import plus from "../images/plus.png";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 function CreatePlayList() {
   const movePage = useNavigate();
   const moveToSelectMusic = () => {
@@ -10,6 +11,7 @@ function CreatePlayList() {
   };
   return (
     <Container>
+      <Header title={"Playlist"} />
       <PhotoUploadBox>
         <img src={photoIcon} alt="" />
       </PhotoUploadBox>
