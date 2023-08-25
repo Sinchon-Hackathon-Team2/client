@@ -4,8 +4,7 @@ import styled from "styled-components";
 // import axios from "axios";
 
 //components
-import Song from "../components/Song";
-import Comments from "../components/Comments";
+import Header from "../components/Header";
 
 //context
 // import { useAuth } from "../contexts/AuthContext";
@@ -41,6 +40,7 @@ const CommentPage = () => {
 
   return (
     <Container>
+      <Header title={"Playlist"} headerRight={"등록"} />
       <CommentInput placeholder="내용을 입력해주세요." />
     </Container>
   );
