@@ -2,7 +2,6 @@ import "./App.css";
 import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-//pages
 import DetailPage from "./pages/DetailPage";
 import CommentPage from "./pages/CommentPage";
 import InitialPage from "./pages/InitialPage";
@@ -11,6 +10,7 @@ import SignupPage from "./pages/SignupPage";
 import MainPage from "./pages/MainPage";
 import MyPage from "./pages/MyPage";
 import CreatePlayList from "./page/CreatePlayList";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
           <Route path={"/signup"} element={<SignupPage />} />
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/createPlayList" element={<CreatePlayList />} />
+          <Route path="/userProfile" element={<UserProfile/>}/>
           <Route path="/" element={<MainPage />} />
         </Routes>
       </Router>

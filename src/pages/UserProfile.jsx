@@ -2,17 +2,18 @@ import React from 'react';
 import { styled } from 'styled-components';
 import Header from '../components/Header';
 import UserInfo from '../components/mypage/UserInfo';
-import ShareProfileBtn from '../components/mypage/ShareProfileBtn';
-import UserPlaylist from '../components/mypage/UserPlaylist';
 
-function MyPage(props) {
+import UserPlaylist from '../components/mypage/UserPlaylist';
+import FollowBtn from '../components/mypage/FollowBtn';
+
+function UserProfile(props) {
     return (
         <Container>
             <Header title={'Profile'} headerRight={''}/>
             <Content>
                 <UserInfo/>
-                <ShareProfileBtn/>
-                <UserPlaylist showCreateButton={true}/>
+                <FollowBtn/>
+                <UserPlaylist showCreateButton={false}/>
             </Content>
         </Container>
     );
@@ -31,4 +32,4 @@ const Content = styled.div`
         display: none;
     }
 `;
-export default MyPage;
+export default UserProfile;

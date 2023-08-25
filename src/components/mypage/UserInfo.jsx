@@ -33,35 +33,34 @@ function UserInfo(props) {
 }
 
 const Container = styled.div`
-margin-left: 10px;
-margin-right: 10px;
+margin-left: 20px;
+margin-right: 20px;
 margin-top: 30px;
-    height: 300px;
-    background-color: yellow;
-    /* display: flex;
-    justify-content: space-between; */
+    height: 220px;
 `;
+
 const Box = styled.div`
     display: flex;
     justify-content: space-between;
-    background-color: skyblue;
-`
+
+`;
+
 const SubBox = styled.div`
-    background-color: red;
     margin-top: 20px;
-    margin-bottom: 10px;
-`
+`;
 
 const UserName = styled.div`
 font-size: 20px;
 font-weight: 700;
 margin-bottom: 10px;
-`
+color: white;
+`;
 
 const UserIntro = styled.div`
 font-size: 14px;
 line-height: 150%;
-`
+color: white;
+`;
 
 const Profile = styled.div`
     width: 101px;
@@ -73,15 +72,17 @@ const Profile = styled.div`
 const Num = styled.div`
     font-size: 20px;
     font-weight: 700;
+    color: white;
 `
 
 const Title = styled.div`
     font-size: 14px;
+    color: white;
 `
 
 const Follower = styled.div`
     height: 101px;
-    background-color: pink;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,7 +92,7 @@ const Follower = styled.div`
 
 const Following = styled.div`
 height: 101px;
-    background-color: green;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -99,7 +100,7 @@ height: 101px;
 `
 const Playlist = styled.div`
 height: 101px;
-    background-color: blue;
+
     display: flex;
     flex-direction: column;
     align-items: center;
