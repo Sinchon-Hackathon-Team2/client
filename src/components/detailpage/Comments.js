@@ -13,16 +13,13 @@ const Comments = ({ userName, comment }) => {
   return (
     <>
       <Box>
-        {/* <ArticleImage src={`${BASE_URL}${article.post_image}`} />
-        <TextContainer>
-          <Title>{article.title}</Title>
-          <ArticleAuthor>by. {article.author}</ArticleAuthor>
-        </TextContainer> */}
-
         <div style={{ display: "flex", flexDirection: "column" }}>
           <UserContainer>
-            <ArticleImage src={ex} />
-            <UserName>{userName}</UserName>
+            <div style={{ display: "flex" }}>
+              <ArticleImage src={ex} />
+              <UserName>{userName}</UserName>
+            </div>
+            <Del>삭제</Del>
           </UserContainer>
           <Comment>{comment}</Comment>
         </div>
@@ -49,8 +46,21 @@ const ArticleImage = styled.img`
 `;
 
 const UserContainer = styled.div`
+  width: 340px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+`;
+
+const Del = styled.div`
+  color: var(--white, var(--white-text-color, #fff));
+  text-align: right;
+
+  font-family: "Pretendard-Regular";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
 `;
 
 const UserName = styled.div`
