@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
 // import axios from "axios";
 
 //components
@@ -8,13 +9,18 @@ import Song from "../components/detailpage/Song";
 import Comments from "../components/detailpage/Comments";
 import Header from "../components/Header";
 
+
 //images
 import likes_on from "../images/likes_on.svg";
 import likes_off from "../images/likes_off.svg";
 import ex from "../images/ex.svg";
+import smallProfile from '../images/smallProfile.png';
+import playlistCover  from '../images/playlistCover.png';
 
 //context
 // import { useAuth } from "../contexts/AuthContext";
+
+
 
 const PlayListDetail = () => {
   const navigate = useNavigate();
@@ -38,8 +44,12 @@ const PlayListDetail = () => {
     <Container>
       <Header title={"Playlist"} headerRight={"Profile"} />
       <div style={{ position: "relative" }}>
-        <PlaylistImg />
-        <UserProfile src={ex} />
+        <PlaylistImg>
+          <img src={playlistCover} alt="커버"/>
+        </PlaylistImg>
+        <UserProfile>
+          <img src={smallProfile} alt="프로필"/>
+        </UserProfile>
         <UserName>강백호</UserName>
       </div>
       <BottomBar>
@@ -132,17 +142,17 @@ const BottomBar = styled.div`
 //   flex-direction: row;
 // `;
 
-const PlaylistImg = styled.img`
+const PlaylistImg = styled.div`
   position: relative;
   z-index: 1;
 
   width: 393px;
   height: 201px;
-  background: #c65d5d;
+  background: none;
   border: none;
 `;
 
-const UserProfile = styled.img`
+const UserProfile = styled.div`
   width: 29px;
   height: 29px;
   border-radius: 50%;
