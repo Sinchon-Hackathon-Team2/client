@@ -19,42 +19,44 @@ import follow_on from "../images/follow_on.svg";
 //context
 // import { useAuth } from "../contexts/AuthContext";
 
+const data = [
+  {
+    cover: cover1,
+    title: "20230825 오늘의 감성 멋대 학생들과 공유~",
+    Tag: ["#댄스", "#랩/힙합"],
+  },
+  {
+    cover: cover2,
+    title: "불꽃남자의 농구할 때 듣는 노래",
+    Tag: ["#댄스", "#록/메탈"],
+  },
+  {
+    cover: cover3,
+    title: "20230824 신나는 노동요 Playlist",
+    Tag: ["#댄스"],
+  },
+  {
+    cover: cover4,
+    title: "힙해지고 싶을 때 듣는 팝송",
+    Tag: ["#댄스", "#랩/힙합"],
+  },
+  {
+    cover: cover5,
+    title: "적당히 좋아하는게 되니 NEWJEANS 노래 모음",
+    Tag: ["#댄스"],
+  },
+  {
+    cover: cover6,
+    title: "Chillin한 감성 채워주는 플레이리스트",
+    Tag: ["#댄스", "#R&B/Soul"],
+  },
+];
+
 const MainPage = () => {
   const navigate = useNavigate();
 
   const [follow, setFollow] = useState(false);
-  const [playlist, setPlaylist] = useState([
-    {
-      cover: cover1,
-      title: "20230825 오늘의 감성 멋대 학생들과 공유~",
-      Tag: ["#댄스", "#랩/힙합"],
-    },
-    {
-      cover: cover2,
-      title: "불꽃남자의 농구할 때 듣는 노래",
-      Tag: ["#댄스", "#록/메탈"],
-    },
-    {
-      cover: cover3,
-      title: "20230824 신나는 노동요 Playlist",
-      Tag: ["#댄스"],
-    },
-    {
-      cover: cover4,
-      title: "힙해지고 싶을 때 듣는 팝송",
-      Tag: ["#댄스", "#랩/힙합"],
-    },
-    {
-      cover: cover5,
-      title: "적당히 좋아하는게 되니 NEWJEANS 노래 모음",
-      Tag: ["#댄스"],
-    },
-    {
-      cover: cover6,
-      title: "Chillin한 감성 채워주는 플레이리스트",
-      Tag: ["#댄스", "#R&B/Soul"],
-    },
-  ]);
+  const [playlist, setPlaylist] = useState(data);
 
   const handleCategoryToggle = () => {
     setFollow((prevState) => !prevState);
@@ -77,7 +79,7 @@ const MainPage = () => {
     "#댄스",
     "#R&B/Soul",
     "#인디음악",
-    "#락/메탈",
+    "#록/메탈",
   ];
 
   // 무작위 배열 섞기 함수
@@ -94,6 +96,11 @@ const MainPage = () => {
     const shuffledPlaylist = shuffleArray([...playlist]);
     setPlaylist(shuffledPlaylist);
   };
+
+  useEffect(() => {
+    if (selectedCategory !== "")
+      setPlaylist(data.filter((item) => item.Tag.includes(selectedCategory)));
+  }, [selectedCategory]);
 
   return (
     <Container>
