@@ -3,9 +3,29 @@ import styled from "styled-components";
 import { useState } from "react";
 import plus from "../images/plus.png";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/HeaderForSelectMusic";
+import Header from "../components/HeaderForCreatePlayList";
 import SelectedMusicData from "../components/SelectedMusicData";
 function CreatePlayList() {
+  const [ballade, setBallade] = useState(false);
+  const [dance, setDance] = useState(false);
+  const [rap, setRap] = useState(false);
+  const [RB, setRB] = useState(false);
+  const [indie, setIndie] = useState(false);
+  const handleCategoryClick1 = () => {
+    setBallade((prev) => !prev);
+  };
+  const handleCategoryClick2 = () => {
+    setDance((prev) => !prev);
+  };
+  const handleCategoryClick3 = () => {
+    setRap((prev) => !prev);
+  };
+  const handleCategoryClick4 = () => {
+    setRB((prev) => !prev);
+  };
+  const handleCategoryClick5 = () => {
+    setIndie((prev) => !prev);
+  };
   const movePage = useNavigate();
   const moveToSelectMusic = () => {
     movePage("/selectMusic");
@@ -22,11 +42,41 @@ function CreatePlayList() {
       </PhotoUploadBox>
       <OverflowContainer>
         <CategoryContainer>
-          <CategoryBtn width="68px">#발라드</CategoryBtn>
-          <CategoryBtn width="57px">#댄스</CategoryBtn>
-          <CategoryBtn width="73px">#랩/힙합</CategoryBtn>
-          <CategoryBtn width="88px">#R&B/Soul</CategoryBtn>
-          <CategoryBtn width="80px">#인디음악</CategoryBtn>
+          <CategoryBtn1
+            width="68px"
+            onClick={handleCategoryClick1}
+            isSelected={ballade}
+          >
+            #발라드
+          </CategoryBtn1>
+          <CategoryBtn2
+            width="57px"
+            onClick={handleCategoryClick2}
+            isSelected={dance}
+          >
+            #댄스
+          </CategoryBtn2>
+          <CategoryBtn3
+            width="73px"
+            onClick={handleCategoryClick3}
+            isSelected={rap}
+          >
+            #랩/힙합
+          </CategoryBtn3>
+          <CategoryBtn4
+            width="88px"
+            onClick={handleCategoryClick4}
+            isSelected={RB}
+          >
+            #R&B/Soul
+          </CategoryBtn4>
+          <CategoryBtn5
+            width="80px"
+            onClick={handleCategoryClick5}
+            isSelected={indie}
+          >
+            #인디음악
+          </CategoryBtn5>
         </CategoryContainer>
       </OverflowContainer>
       <TitleInputContainer>
@@ -85,11 +135,59 @@ const CategoryContainer = styled.div`
   margin-left: 10px;
   overflow: scroll;
 `;
-const CategoryBtn = styled.button`
+const CategoryBtn1 = styled.button`
   width: ${(props) => props.width};
   height: 25px;
   background-color: #202329;
-  color: #4c4e53;
+  color: ${(props) => (props.isSelected ? "#34AFF4" : "#4c4e53")};
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.28px;
+  border: 1px solid;
+  cursor: pointer;
+`;
+const CategoryBtn2 = styled.button`
+  width: ${(props) => props.width};
+  height: 25px;
+  background-color: #202329;
+  color: ${(props) => (props.isSelected ? "#34AFF4" : "#4c4e53")};
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.28px;
+  border: 1px solid;
+  cursor: pointer;
+`;
+const CategoryBtn3 = styled.button`
+  width: ${(props) => props.width};
+  height: 25px;
+  background-color: #202329;
+  color: ${(props) => (props.isSelected ? "#34AFF4" : "#4c4e53")};
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.28px;
+  border: 1px solid;
+  cursor: pointer;
+`;
+const CategoryBtn4 = styled.button`
+  width: ${(props) => props.width};
+  height: 25px;
+  background-color: #202329;
+  color: ${(props) => (props.isSelected ? "#34AFF4" : "#4c4e53")};
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.28px;
+  border: 1px solid;
+  cursor: pointer;
+`;
+const CategoryBtn5 = styled.button`
+  width: ${(props) => props.width};
+  height: 25px;
+  background-color: #202329;
+  color: ${(props) => (props.isSelected ? "#34AFF4" : "#4c4e53")};
   border-radius: 20px;
   font-size: 14px;
   font-weight: 400;

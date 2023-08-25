@@ -1,10 +1,9 @@
 import "./App.css";
 import styled from "styled-components";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MyPage from "./pages/MyPage";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import CreatePlayList from "./page/CreatePlayList";
 import SelectMusic from "./page/SelectMusic";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import DetailPage from "./pages/DetailPage";
 import CommentPage from "./pages/CommentPage";
@@ -13,8 +12,9 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import MainPage from "./pages/MainPage";
 import MyPage from "./pages/MyPage";
-import CreatePlayList from "./page/CreatePlayList";
+
 import UserProfile from "./pages/UserProfile";
+import PlayListDetail from "./page/PlayListDetail";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/createPlayList" element={<CreatePlayList />} />
           <Route path="/selectMusic" element={<SelectMusic />} />
+          <Route path="/playListDetail" element={<PlayListDetail />} />
           <Route path={"/detail"} element={<DetailPage />} />
           <Route path={"/comment"} element={<CommentPage />} />
           <Route path={"/initial"} element={<InitialPage />} />
