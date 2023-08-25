@@ -24,7 +24,7 @@ function MusicData({ title, thumbnail, channelTitle, url }) {
         <img
           src={checked ? check : notCheck}
           alt=""
-          style={{ alignItems: "center", position: "relative" }}
+          style={{ alignItems: "center", position: "relative", top: "5px" }}
           onClick={handleToggleCheck}
         />
       </MusicInfoContainer>
