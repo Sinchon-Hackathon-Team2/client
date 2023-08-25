@@ -1,11 +1,13 @@
 import React from 'react';
 import { styled } from 'styled-components';
-
+import profileImg from '../../images/profile.png';
 function UserInfo(props) {
     return (
         <Container>
             <Box>
-                <Profile></Profile>
+                <Profile>
+                    <img src={profileImg} alt="프로필이미지"/>
+                </Profile>
                 <Follower>
                     <Num>2.2만</Num>
                     <Title>팔로워</Title>
@@ -65,7 +67,6 @@ color: white;
 const Profile = styled.div`
     width: 101px;
     height: 101px;
-    background-color: #d9d9d9;
     border-radius: 50%;
 `;
 

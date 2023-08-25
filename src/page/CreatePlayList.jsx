@@ -131,7 +131,7 @@ const CategoryContainer = styled.div`
   display: flex;
   justify-content: space-around;
   margin-left: 10px;
-  overflow: scroll;
+  overflow: hidden;
 `;
 const CategoryBtn1 = styled.button`
   width: ${(props) => props.width};
