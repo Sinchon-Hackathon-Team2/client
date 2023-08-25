@@ -8,8 +8,8 @@ function Header({ title, headerRight }) {
   const onClickBack = () => {
     navigate(-1);
   };
-  const moveToCreatePlayList = () => {
-    navigate("/createPlayList");
+  const moveToDetail = () => {
+    navigate("/playListDetail");
   };
 
   return (
@@ -17,7 +17,7 @@ function Header({ title, headerRight }) {
       <StyledHeaderBackBtn onClick={onClickBack} />
 
       <Title>{title}</Title>
-      <HeaderRight onClick={moveToCreatePlayList}>{headerRight}</HeaderRight>
+      <HeaderRight onClick={moveToDetail}>{headerRight}</HeaderRight>
     </Container>
   );
 }

@@ -17,7 +17,6 @@ function MyPage(props) {
       </Content>
     </Container>
   );
-
 }
 
 const Container = styled.div`
