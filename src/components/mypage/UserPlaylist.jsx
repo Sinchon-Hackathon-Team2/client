@@ -12,25 +12,25 @@ function UserPlaylist(props) {
         navigate('/createPlayList');
     }
 
-    const handleDetailPlaylist = (playlistIndex) => {
-        navigate('/detail/${playlistIndex}');
+    const handleDetailPlaylist = (post_id) => {
+        navigate(`/detail/${post_id}`);
     }
 
     const playlist = [
         {
             cover: playlistCover,
             title: "20230825 오늘의 감성 멋대 학생들과 공유~",
-            Tag: ["태그1", "태그2"],
+            Tag: ["#태그1", "#태그2"],
         },
         {
             cover: playlistCover,
             title: "불꽃남자의 농구할 때 듣는 노래",
-            Tag: ["태그1", "태그2", "태그3"],
+            Tag: ["#태그1", "#태그2", "#태그3"],
         },
         {
             cover: playlistCover,
             title: "20230824 신나는 노동요 Playlist",
-            Tag: ["태그1", "태그2"],
+            Tag: ["#태그1", "#태그2"],
         },
     ]
 
@@ -42,10 +42,10 @@ function UserPlaylist(props) {
         </Container>
         <PlaylistContainer>
             {playlist.map((item, index) => (
-                <SubContainer key={index} onClick={handleDetailPlaylist(index)}>
+                <SubContainer key={index} onClick={()=>handleDetailPlaylist(index)}>
                     <Cover src={item.cover} alt={`Playlist Cover ${index}`} />
                     <SubTitle>{item.title}</SubTitle>
-                    <Tag>{item.Tag.join(', ')}</Tag>
+                    <Tag>{item.Tag.join('')}</Tag>
                 </SubContainer>
             ))}
         </PlaylistContainer>
@@ -89,7 +89,7 @@ const Button = styled.button`
 `;
 
 const SubContainer = styled.div`
-
+cursor: pointer;
 `
 
 const SubTitle = styled.div`

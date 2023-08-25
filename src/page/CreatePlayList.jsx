@@ -100,11 +100,9 @@ function CreatePlayList() {
         <SelectedMusicData />
         <SelectedMusicData />
         <SelectedMusicData />
-
         <SelectedMusicData />
         <SelectedMusicData />
         <SelectedMusicData />
-
         <SelectedMusicData />
       </MusicDataContainer>
     </Container>
@@ -222,7 +220,7 @@ const TitleInput = styled.input`
   padding: 0;
   color: white;
   font-family: Pretendard;
-  font-size: 22px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: 181%; /* 39.82px */
@@ -233,7 +231,7 @@ const TitleInput = styled.input`
   &:placeholder-shown {
     color: var(--gray-1, #4c4e53);
     font-family: Pretendard;
-    font-size: 22px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 600;
     line-height: 181%; /* 39.82px */

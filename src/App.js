@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import CreatePlayList from "./page/CreatePlayList";
-import SelectMusic from "./page/SelectMusic";
-
 import DetailPage from "./pages/DetailPage";
 import CommentPage from "./pages/CommentPage";
 import InitialPage from "./pages/InitialPage";
@@ -15,6 +13,7 @@ import MyPage from "./pages/MyPage";
 
 import UserProfile from "./pages/UserProfile";
 import PlayListDetail from "./page/PlayListDetail";
+import SelectMusic from "./page/SelectMusic";
 
 function App() {
   return (
@@ -23,9 +22,10 @@ function App() {
         <Routes>
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/createPlayList" element={<CreatePlayList />} />
-          <Route path="/selectMusic" element={<SelectMusic />} />
+          <Route path="/selectMusic" element={<SelectMusic />} /
           <Route path="/playListDetail" element={<PlayListDetail />} />
           <Route path={"/detail"} element={<DetailPage />} />
+          <Route path={"/detail/:post_id"} element={<DetailPage />} />
           <Route path={"/comment"} element={<CommentPage />} />
           <Route path={"/initial"} element={<InitialPage />} />
           <Route path={"/login"} element={<LoginPage />} />
