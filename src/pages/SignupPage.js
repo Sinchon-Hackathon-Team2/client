@@ -21,7 +21,7 @@ const SignupPage = () => {
     const value = e.target.value;
 
     // 숫자만 입력 가능하도록 정규식을 사용하여 검증
-    if (/^\d{0,4}$/gm.test(value)) {
+    if (/^\d{0,5}$/gm.test(value)) {
       setVerificationCode(value);
     }
   };
