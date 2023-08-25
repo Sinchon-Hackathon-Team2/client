@@ -4,14 +4,17 @@ import preview from "../images/preview.png";
 import check from "../images/check.svg";
 import notCheck from "../images/notCheck.svg";
 
-function MusicData({ title, thumbnail, channelTitle }) {
+function MusicData({ title, thumbnail, channelTitle, url }) {
   const [checked, setChecked] = useState(false);
   const handleToggleCheck = () => {
     setChecked((prevChecked) => !prevChecked);
   };
 
+  const moveTourl = () => {
+    window.location.href = `${url}`;
+  };
   return (
-    <Container>
+    <Container onClick={moveTourl}>
       <img src={thumbnail} alt="" />
       <MusicInfoContainer>
         <MusicTitle>

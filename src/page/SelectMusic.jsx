@@ -42,6 +42,7 @@ function SelectMusic() {
             title={item.title}
             thumbnail={item.thumbnail}
             channelTitle={item.channelTitle}
+            url={item.url}
           ></MusicData>
         ))}
       </MusicDataContainer>
