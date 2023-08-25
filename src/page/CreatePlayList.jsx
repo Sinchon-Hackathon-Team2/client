@@ -114,7 +114,7 @@ const Container = styled.div`
 const PhotoUploadBox = styled.div`
   width: 393px;
   height: 224px;
-
+  cursor: pointer;
   background-color: ${(props) => props.color};
   display: flex;
   justify-content: center;
@@ -126,7 +126,7 @@ const CategoryContainer = styled.div`
   display: flex;
   justify-content: space-around;
   margin-left: 10px;
-  overflow: scroll;
+  overflow: hidden;
 `;
 const CategoryBtn1 = styled.button`
   width: ${(props) => props.width};

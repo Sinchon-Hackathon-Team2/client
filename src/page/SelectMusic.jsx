@@ -3,32 +3,50 @@ import styled from "styled-components";
 import Header from "../components/HeaderForSelectMusic";
 import search from "../images/searchIcon.svg";
 import MusicData from "../components/MusicData";
+import { useState } from "react";
+import axios from "axios";
 
 function SelectMusic() {
+  const [keyword, setKeyword] = useState("");
+  const [musicData, setMusicData] = useState([]);
+  const getSearch = async () => {
+    const url = "https://www.googleapis.com/youtube/v3/search";
+
+    const params = {
+      part: "snippet",
+      maxResults: 10,
+      q: keyword,
+      key: "AIzaSyAVernaWFOQLRicwb1VumSN9HAByQBNOiw",
+    };
+
+    axios
+      .get(url, { params })
+      .then((response) => {
+        setMusicData([response.data.items]);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  };
+  //console.log("data:", data);
+  console.log("data:", musicData);
   return (
     <Container>
       <Header title={"playlist"} headerRight={"완료"} />
       <SearchContainer>
         <FlexContainer>
-          <TitleInput placeholder="검색"></TitleInput>
-          <img src={search} alt="" />
+          <TitleInput
+            placeholder="검색"
+            onChange={(e) => setKeyword(e.target.value)}
+          ></TitleInput>
+          <img src={search} alt="" onClick={getSearch} />
         </FlexContainer>
         <Hrdiv />
       </SearchContainer>
       <MusicDataContainer>
-        <MusicData />
-        <MusicData />
-        <MusicData />
-        <MusicData />
-        <MusicData />
-        <MusicData />
-        <MusicData />
-        <MusicData />
-        <MusicData />
-        <MusicData />
-        <MusicData />
-        <MusicData />
-        <MusicData />
+        {musicData.map((item, idx) => (
+          <MusicData key={idx} musicData={item}></MusicData>
+        ))}
       </MusicDataContainer>
     </Container>
   );
