@@ -1,15 +1,15 @@
 import styled from "styled-components";
-import preview from "../images/preview.png";
+
 import check from "../images/check.svg";
 import notCheck from "../images/notCheck.svg";
-function SelectedMusicData() {
+function SelectedMusicData({ img, title, singer }) {
   return (
     <Container>
-      <img src={preview} alt="" />
+      <img src={img} alt="" />
       <MusicInfoContainer>
         <MusicTitle>
-          CLAP!
-          <span>TREASURE(트레저)</span>
+          {title}
+          <span>{singer}</span>
         </MusicTitle>
       </MusicInfoContainer>
     </Container>

@@ -10,23 +10,15 @@ function SelectMusic() {
   const [keyword, setKeyword] = useState("");
   const [musicData, setMusicData] = useState([]);
   const getSearch = async () => {
-    const url = "https://www.googleapis.com/youtube/v3/search";
-
-    const params = {
-      part: "snippet",
-      maxResults: 10,
-      q: keyword,
-      key: "AIzaSyAVernaWFOQLRicwb1VumSN9HAByQBNOiw",
-    };
-
-    axios
-      .get(url, { params })
-      .then((response) => {
-        setMusicData([response.data.items]);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+    try {
+      const response = await axios.post(
+        "https://testmate.o-r.kr/post/searchYoutube/",
+        { word: keyword }
+      );
+      setMusicData(response.data);
+    } catch (error) {
+      console.log("sending error");
+    }
   };
   //console.log("data:", data);
   console.log("data:", musicData);
@@ -45,7 +37,12 @@ function SelectMusic() {
       </SearchContainer>
       <MusicDataContainer>
         {musicData.map((item, idx) => (
-          <MusicData key={idx} musicData={item}></MusicData>
+          <MusicData
+            key={idx}
+            title={item.title}
+            thumbnail={item.thumbnail}
+            channelTitle={item.channelTitle}
+          ></MusicData>
         ))}
       </MusicDataContainer>
     </Container>
