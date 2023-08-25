@@ -32,8 +32,6 @@ const StyledHeaderBackBtn = styled(HeaderBackBtn)`
     margin-top: 60px;
     margin-left: 15px;
     width: 50px;
-
-
 `;
 
 
