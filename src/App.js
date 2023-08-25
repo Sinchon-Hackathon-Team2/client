@@ -1,11 +1,7 @@
 import "./App.css";
 import styled from "styled-components";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MyPage from "./pages/MyPage";
-import CreatePlayList from "./page/CreatePlayList";
 import SelectMusic from "./page/SelectMusic";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import DetailPage from "./pages/DetailPage";
 import CommentPage from "./pages/CommentPage";
 import InitialPage from "./pages/InitialPage";
@@ -24,7 +20,7 @@ function App() {
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/createPlayList" element={<CreatePlayList />} />
           <Route path="/selectMusic" element={<SelectMusic />} />
-          <Route path={"/detail"} element={<DetailPage />} />
+          <Route path={"/detail/:post_id"} element={<DetailPage />} />
           <Route path={"/comment"} element={<CommentPage />} />
           <Route path={"/initial"} element={<InitialPage />} />
           <Route path={"/login"} element={<LoginPage />} />
