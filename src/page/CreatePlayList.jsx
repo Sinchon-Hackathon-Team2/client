@@ -91,13 +91,8 @@ function CreatePlayList() {
       <MusicDataContainer>
         <MusicListInfoContainer>
           <Info1>내가 추가한 곡</Info1>
-          <Info2>2곡</Info2>
+          <Info2>6곡</Info2>
         </MusicListInfoContainer>
-        <SelectedMusicData />
-        <SelectedMusicData />
-        <SelectedMusicData />
-        <SelectedMusicData />
-        <SelectedMusicData />
         <SelectedMusicData />
         <SelectedMusicData />
         <SelectedMusicData />
@@ -119,7 +114,7 @@ const Container = styled.div`
 const PhotoUploadBox = styled.div`
   width: 393px;
   height: 224px;
-
+  cursor: pointer;
   background-color: ${(props) => props.color};
   display: flex;
   justify-content: center;

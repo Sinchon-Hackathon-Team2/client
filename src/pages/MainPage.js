@@ -23,6 +23,7 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   const [follow, setFollow] = useState(false);
+  
   const handleCategoryToggle = () => {
     setFollow((prevState) => !prevState);
   };
@@ -34,8 +35,8 @@ const MainPage = () => {
   };
 
   const handleDetailPlaylist = (post_id) => {
-        navigate(`/detail/${post_id}`);
-    }
+    navigate(`/detail/${post_id}`);
+  };
 
   // 더미 카테고리 데이터
   const categories = [
@@ -43,8 +44,8 @@ const MainPage = () => {
     "#랩/힙합",
     "#댄스",
     "#R&B/Soul",
-    "인디음악",
-    "락/메탈",
+    "#인디음악",
+    "#락/메탈",
   ];
 
   // 더미 플레이리스트 박스 데이터
@@ -81,13 +82,29 @@ const MainPage = () => {
     },
 ]
 
+  // 무작위 배열 섞기 함수
+  const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  const handleShufflePlaylist = () => {
+    handleCategoryToggle();
+    const shuffledPlaylist = shuffleArray([...playlist]);
+    setPlaylist(shuffledPlaylist);
+  };
+
+
   return (
     <Container>
       <Header title={"Main"} headerRight={"Profile"} />
       <FollowBox>
         <FollowImg
           src={follow ? follow_on : follow_off}
-          onClick={handleCategoryToggle}
+          onClick={handleShufflePlaylist}
         />
         <span>팔로우한 사람만 보기</span>
       </FollowBox>
@@ -103,14 +120,14 @@ const MainPage = () => {
         ))}
       </CategoryList>
       <PlaylistContainer>
-            {playlist.map((item, index) => (
-                <SubContainer key={index} onClick={()=>handleDetailPlaylist(index)}>
-                    <Cover src={item.cover} alt={`Playlist Cover ${index}`} />
-                    <SubTitle>{item.title}</SubTitle>
-                    <Tag>{item.Tag.join('')}</Tag>
-                </SubContainer>
-            ))}
-        </PlaylistContainer>
+        {playlist.map((item, index) => (
+          <SubContainer key={index} onClick={() => handleDetailPlaylist(index)}>
+            <Cover src={item.cover} alt={`Playlist Cover ${index}`} />
+            <SubTitle>{item.title}</SubTitle>
+            <Tag>{item.Tag.join("")}</Tag>
+          </SubContainer>
+        ))}
+      </PlaylistContainer>
     </Container>
   );
 };
@@ -119,6 +136,7 @@ export default MainPage;
 
 //전체 styled
 const PlaylistContainer = styled.div`
+
     display: grid;
     grid-template-columns: repeat(2, 1fr);  /* 가로 한 줄에 2개씩 박스 배치 */
     gap: 20px;
@@ -128,18 +146,17 @@ const PlaylistContainer = styled.div`
     &::-webkit-scrollbar {
     display: none;
   }
-`;
-
-const Cover = styled.img`
 
 `;
+
+const Cover = styled.img``;
 
 const SubContainer = styled.div`
-cursor: pointer;
-
-`
+  cursor: pointer;
+`;
 
 const SubTitle = styled.div`
+
 margin-top: 5px;
 color: white;
 font-size: 16px;
@@ -149,7 +166,10 @@ const Tag = styled.div`
 margin-top: 10px;
 color: white;
 font-size: 14px;
+
 `;
+
+
 
 const Container = styled.div`
   display: flex;
@@ -186,7 +206,6 @@ const FollowBox = styled.div`
     line-height: 100%; /* 15px */
     letter-spacing: -0.3px;
   }
-
 `;
 
 const FollowImg = styled.img`
@@ -210,7 +229,6 @@ const CategoryList = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
-
 `;
 
 const Category = styled.div`
