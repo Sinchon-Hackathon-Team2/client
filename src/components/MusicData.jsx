@@ -1,9 +1,15 @@
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import preview from "../images/preview.png";
 import check from "../images/check.svg";
 import notCheck from "../images/notCheck.svg";
-function MusicData({ musicData }) {
-  console.log("con", musicData);
+
+function MusicData() {
+  const [checked, setChecked] = useState(false);
+  const handleToggleCheck = () => {
+    setChecked((prevChecked) => !prevChecked);
+  };
+
   return (
     <Container>
       <img src={preview} alt="" />
@@ -12,7 +18,11 @@ function MusicData({ musicData }) {
           {}
           <span>TREASURE(트레저)</span>
         </MusicTitle>
-        <img src={check} alt="" />
+        <img
+          src={checked ? check : notCheck}
+          alt=""
+          onClick={handleToggleCheck}
+        />
       </MusicInfoContainer>
     </Container>
   );

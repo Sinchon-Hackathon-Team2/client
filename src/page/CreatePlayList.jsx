@@ -91,13 +91,8 @@ function CreatePlayList() {
       <MusicDataContainer>
         <MusicListInfoContainer>
           <Info1>내가 추가한 곡</Info1>
-          <Info2>2곡</Info2>
+          <Info2>6곡</Info2>
         </MusicListInfoContainer>
-        <SelectedMusicData />
-        <SelectedMusicData />
-        <SelectedMusicData />
-        <SelectedMusicData />
-        <SelectedMusicData />
         <SelectedMusicData />
         <SelectedMusicData />
         <SelectedMusicData />
