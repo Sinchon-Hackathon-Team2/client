@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import logo from "../images/Logo.svg";
 
@@ -8,14 +9,10 @@ const SignupPage = () => {
   const navigate = useNavigate();
 
   const [check, setCheck] = useState(false);
-  const [verificationCode, setVerificationCode] = useState("");
-  const [nickname, setNickname] = useState("");
-  const [schoolName, setSchoolName] = useState("서강대학교");
-  const [schoolEmail, setSchoolEmail] = useState("");
-
-  const handleCheckToggle = () => {
-    setCheck((prevState) => !prevState);
-  };
+  const [code, setVerificationCode] = useState("");
+  const [nickName, setNickname] = useState("");
+  const [univName, setSchoolName] = useState("서강대학교");
+  const [email, setSchoolEmail] = useState("");
 
   const handleVerificationCodeChange = (e) => {
     const value = e.target.value;
@@ -26,70 +23,83 @@ const SignupPage = () => {
     }
   };
 
-  const isBtnDisabled = check
-    ? !nickname
-    : !schoolName || !schoolEmail || !verificationCode;
+  const handleCheckToggle = () => {
+    // 인증 요청 버튼을 눌렀을 때 실행될 함수
+    console.log("hi");
+    try {
+      const response = axios.post("https://testmate.o-r.kr/account/request/", {
+        email,
+        univName,
+      });
 
+      console.log("인증 요청 성공:", response);
+    } catch (error) {
+      console.error("인증 요청 에러:", error);
+    }
+  };
+
+  const handleSignup = () => {
+    // 회원가입 버튼을 눌렀을 때 실행될 함수
+    try {
+      const response = axios.post("https://testmate.o-r.kr/account/check/", {
+        email,
+        univName,
+        code,
+        nickName,
+      });
+
+      console.log("회원가입 성공:", response.data);
+
+      // 회원가입이 성공하면 초기 페이지로 이동합니다.
+      navigate("/initial");
+    } catch (error) {
+      console.error("회원가입 에러:", error);
+    }
+  };
   return (
     <>
-      {check ? (
-        <Container>
-          <Logo src={logo} />
-          <Explain>우리끼리 공유하는 음악 취향</Explain>
-          <Explain2>
-            서비스 이용을 위해 <br /> 학교 인증을 진행해주세요.
-          </Explain2>
-          <InputWrapper>
-            <Ex>닉네임</Ex>
-            <Input
-              type="text"
-              placeholder="닉네임을 작성해주세요"
-              onChange={(e) => setNickname(e.target.value)}
-              value={nickname}
-            />
-            <Btn onClick={() => navigate("/initial")} disabled={isBtnDisabled}>
-              회원가입
-            </Btn>
-          </InputWrapper>
-        </Container>
-      ) : (
-        <Container>
-          <Logo src={logo} />
-          <Explain>우리끼리 공유하는 음악 취향</Explain>
-          <Explain2>
-            서비스 이용을 위해 <br /> 학교 인증을 진행해주세요.
-          </Explain2>
-          <InputWrapper>
-            <Ex>학교 이름</Ex>
-            <Select
-              onChange={(e) => setSchoolName(e.target.value)}
-              value={schoolName}
-            >
-              <option>서강대학교</option>
-              <option>연세대학교</option>
-              <option>이화여자대학교</option>
-              <option>홍익대학교</option>
-            </Select>
-            <Ex>학교 이메일</Ex>
-            <Input
-              type="email"
-              placeholder="학교 이메일을 작성해주세요"
-              onChange={(e) => setSchoolEmail(e.target.value)}
-              value={schoolEmail}
-            />
-            <Ex>인증 번호</Ex>
-            <Input
-              type="text"
-              placeholder="위 이메일로 보내진 인증번호를 작성해주세요"
-              value={verificationCode}
-              onInput={handleVerificationCodeChange}
-            />
-            <Btn onClick={handleCheckToggle} disabled={isBtnDisabled}>
-              인증완료
-            </Btn>
-          </InputWrapper>
-        </Container>
-      )}
+      <Container>
+        <Logo src={logo} />
+        <Explain>우리끼리 공유하는 음악 취향</Explain>
+        <Explain2>
+          서비스 이용을 위해 <br /> 학교 인증을 진행해주세요.
+        </Explain2>
+        <InputWrapper>
+          <Ex>학교 이름</Ex>
+          <Select
+            onChange={(e) => setSchoolName(e.target.value)}
+            value={univName}
+          >
+            <option>서강대학교</option>
+            <option>연세대학교</option>
+            <option>이화여자대학교</option>
+            <option>홍익대학교</option>
+          </Select>
+          <Ex>학교 이메일</Ex>
+          <Input
+            type="email"
+            placeholder="학교 이메일을 작성해주세요"
+            onChange={(e) => setSchoolEmail(e.target.value)}
+            value={email}
+          />
+          <Btn onClick={handleCheckToggle}>인증요청</Btn>
+          <Ex>인증 번호</Ex>
+          <Input
+            type="text"
+            placeholder="위 이메일로 보내진 인증번호를 작성해주세요"
+            value={code}
+            onInput={handleVerificationCodeChange}
+          />
+          <Ex>닉네임</Ex>
+          <Input
+            type="text"
+            placeholder="닉네임을 작성해주세요"
+            onChange={(e) => setNickname(e.target.value)}
+            value={nickName}
+          />
+          <Btn onClick={handleSignup}>회원가입</Btn>
+        </InputWrapper>
+      </Container>
     </>
   );
 };
@@ -201,11 +211,10 @@ const Btn = styled.button`
   justify-content: center;
   align-items: center;
 
-  margin-top: 30px;
+  margin-bottom: 15px;
 
   border-radius: 40px;
-  background: ${(props) =>
-    props.disabled ? "var(--gray-3, #BDB4B4)" : "var(--main-1, #34aff4)"};
+  background: var(--main-1, #34aff4);
   border: none;
   cursor: pointer;
 `;
