@@ -4,7 +4,7 @@ import preview from "../images/preview.png";
 import check from "../images/check.svg";
 import notCheck from "../images/notCheck.svg";
 
-function MusicData() {
+function MusicData({ title, thumbnail, channelTitle }) {
   const [checked, setChecked] = useState(false);
   const handleToggleCheck = () => {
     setChecked((prevChecked) => !prevChecked);
@@ -12,15 +12,16 @@ function MusicData() {
 
   return (
     <Container>
-      <img src={preview} alt="" />
+      <img src={thumbnail} alt="" />
       <MusicInfoContainer>
         <MusicTitle>
-          {}
-          <span>TREASURE(트레저)</span>
+          {title.substr(0, 20)}
+          <span>{channelTitle}</span>
         </MusicTitle>
         <img
           src={checked ? check : notCheck}
           alt=""
+          style={{ alignItems: "center", position: "relative" }}
           onClick={handleToggleCheck}
         />
       </MusicInfoContainer>
@@ -36,6 +37,8 @@ const Container = styled.div`
   margin-bottom: 15px;
   img {
     border-radius: 10px;
+    width: 46px;
+    height: 46px;
   }
 `;
 const MusicInfoContainer = styled.div`

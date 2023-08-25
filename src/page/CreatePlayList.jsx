@@ -5,6 +5,9 @@ import plus from "../images/plus.png";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/HeaderForCreatePlayList";
 import SelectedMusicData from "../components/SelectedMusicData";
+import wonderland from "../images/wonderland.png";
+import preview from "../images/preview.png";
+import darari from "../images/darari.jpg";
 function CreatePlayList() {
   const [ballade, setBallade] = useState(false);
   const [dance, setDance] = useState(false);
@@ -91,11 +94,23 @@ function CreatePlayList() {
       <MusicDataContainer>
         <MusicListInfoContainer>
           <Info1>내가 추가한 곡</Info1>
-          <Info2>6곡</Info2>
+          <Info2>3곡</Info2>
         </MusicListInfoContainer>
-        <SelectedMusicData />
-        <SelectedMusicData />
-        <SelectedMusicData />
+        <SelectedMusicData
+          img={preview}
+          title="CLAP!"
+          singer="TREASURE(트레저)"
+        />
+        <SelectedMusicData
+          img={wonderland}
+          title="WONDERLAND"
+          singer="TREASURE(트레저)"
+        />
+        <SelectedMusicData
+          img={darari}
+          title="다라리"
+          singer="TREASURE(트레저)"
+        />
         <SelectedMusicData />
         <SelectedMusicData />
         <SelectedMusicData />
