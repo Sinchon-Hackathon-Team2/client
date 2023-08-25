@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
+import Header from "../components/HeaderForSelectMusic";
 import search from "../images/searchIcon.svg";
 import MusicData from "../components/MusicData";
 

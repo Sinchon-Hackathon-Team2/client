@@ -2,7 +2,7 @@ import styled from "styled-components";
 import preview from "../images/preview.png";
 import check from "../images/check.svg";
 import notCheck from "../images/notCheck.svg";
-function MusicData() {
+function SelectedMusicData() {
   return (
     <Container>
       <img src={preview} alt="" />
@@ -11,12 +11,11 @@ function MusicData() {
           CLAP!
           <span>TREASURE(트레저)</span>
         </MusicTitle>
-        <img src={check} alt="" />
       </MusicInfoContainer>
     </Container>
   );
 }
-export default MusicData;
+export default SelectedMusicData;
 const Container = styled.div`
   width: 372px;
   height: 46px;

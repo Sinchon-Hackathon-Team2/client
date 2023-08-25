@@ -1,19 +1,24 @@
 import React from "react";
 import styled from "styled-components";
-import photoIcon from "../images/photo.png";
+import { useState } from "react";
 import plus from "../images/plus.png";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../components/HeaderForSelectMusic";
+import SelectedMusicData from "../components/SelectedMusicData";
 function CreatePlayList() {
   const movePage = useNavigate();
   const moveToSelectMusic = () => {
     movePage("/selectMusic");
   };
+  const [randomColor, setRandomColor] = useState("");
+  const changeColor = () => {
+    setRandomColor("#" + Math.floor(Math.random() * 16777215).toString(16));
+  };
   return (
     <Container>
-      <Header title={"Playlist"} />
-      <PhotoUploadBox>
-        <img src={photoIcon} alt="" />
+      <Header title={"Playlist"} headerRight={"완료"} />
+      <PhotoUploadBox color={randomColor} onClick={changeColor}>
+        <ColorInfo>색을 변경하려면 클릭하세요.</ColorInfo>
       </PhotoUploadBox>
       <OverflowContainer>
         <CategoryContainer>
@@ -33,6 +38,25 @@ function CreatePlayList() {
         <img src={plus} alt="" />
         <AddMusic>곡 추가하기</AddMusic>
       </AddMusicContainer>
+      <MusicDataContainer>
+        <MusicListInfoContainer>
+          <Info1>내가 추가한 곡</Info1>
+          <Info2>2곡</Info2>
+        </MusicListInfoContainer>
+        <SelectedMusicData />
+        <SelectedMusicData />
+        <SelectedMusicData />
+        <SelectedMusicData />
+        <SelectedMusicData />
+        <SelectedMusicData />
+        <SelectedMusicData />
+
+        <SelectedMusicData />
+        <SelectedMusicData />
+        <SelectedMusicData />
+
+        <SelectedMusicData />
+      </MusicDataContainer>
     </Container>
   );
 }
@@ -47,7 +71,8 @@ const Container = styled.div`
 const PhotoUploadBox = styled.div`
   width: 393px;
   height: 224px;
-  background-color: #5f5dc6;
+
+  background-color: ${(props) => props.color};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +82,6 @@ const CategoryContainer = styled.div`
   height: 25px;
   display: flex;
   justify-content: space-around;
-
   margin-left: 10px;
   overflow: scroll;
 `;
@@ -75,7 +99,7 @@ const CategoryBtn = styled.button`
 `;
 const OverflowContainer = styled.div`
   width: 393px;
-  height: 25px;
+  height: 50px;
   overflow: scroll;
   margin-top: 26px;
   &::-webkit-scrollbar {
@@ -137,6 +161,7 @@ const AddMusicContainer = styled.div`
   height: 15px;
   display: flex;
   padding-left: 25px;
+  margin-bottom: 15px;
   align-items: baseline;
   img {
     margin-right: 10px;
@@ -159,4 +184,51 @@ const AddMusic = styled.div`
   img {
     margin-right: 5px;
   }
+`;
+const MusicDataContainer = styled.div`
+  width: 100%;
+  height: 200px;
+  overflow: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  padding-left: 20px;
+  padding-right: 20px;
+`;
+const MusicListInfoContainer = styled.div`
+  width: 340px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: space-between;
+`;
+const Info1 = styled.div`
+  color: var(--white-text-color, #fff);
+  width: 98px;
+  /* Body1 */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.28px;
+`;
+const Info2 = styled.div`
+  color: var(--gray-2, #bdb4b4);
+  text-align: right;
+  width: 43px;
+  /* Body3 */
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.24px;
+`;
+const ColorInfo = styled.div`
+  color: lightgray;
+  background-color: transparent;
+  font-size: 13px;
 `;
