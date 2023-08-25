@@ -1,9 +1,9 @@
 import "./App.css";
 import styled from "styled-components";
-import Header from "./components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MyPage from "./pages/MyPage";
 import CreatePlayList from "./page/CreatePlayList";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/mypage" element={<MyPage/>}/>
           <Route path="/createPlayList" element={<CreatePlayList />} />
+          <Route path="/userProfile" element={<UserProfile/>}/>
         </Routes>
         
       </BrowserRouter>
