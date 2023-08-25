@@ -4,8 +4,6 @@ import photoIcon from "../img/photo.png";
 import plus from "../img/plus.png";
 
 function CreatePlayList() {
-  const movePage = useNavigate();
-
   return (
     <Container>
       <PhotoUploadBox>
