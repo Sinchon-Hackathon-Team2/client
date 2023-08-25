@@ -40,6 +40,7 @@ const StyledHeaderBackBtn = styled(HeaderBackBtn)`
   margin-top: 60px;
   margin-left: 15px;
   width: 50px;
+  cursor: pointer;
 `;
 
 const Title = styled.div`
@@ -58,6 +59,7 @@ const HeaderRight = styled.div`
   margin-right: 15px;
   color: #34aff4;
   width: 50px;
+  cursor: pointer;
 `;
 
 export default Header;
