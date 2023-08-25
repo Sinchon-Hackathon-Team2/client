@@ -22,7 +22,7 @@ function App() {
         <Routes>
           <Route path="/mypage" element={<MyPage />} />
           <Route path="/createPlayList" element={<CreatePlayList />} />
-          <Route path="/selectMusic" element={<SelectMusic />} />
+          <Route path="/selectMusic" element={<SelectMusic />}/>
           <Route path="/playListDetail" element={<PlayListDetail />} />
           <Route path={"/detail/:post_id"} element={<DetailPage />} />
           <Route path={"/comment"} element={<CommentPage />} />
